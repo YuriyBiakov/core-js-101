@@ -224,42 +224,10 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-  let result = '';
-  const upLeft = '┌';
-  const upRight = '┐';
-  const downLeft = '└';
-  const downRight = '┘';
   const horisontal = '─';
-  const vertical = '│';
-  for (let i = 0; i < height; i += 1) {
-    for (let y = 0; y < width; y += 1) {
-      if (i === 0 && y === 0) {
-        result += upLeft;
-      }
-      if (i === 0 && y === width - 1) {
-        result = `${result}${upRight}'\n'`;
-      }
-      if (i === height - 1 && y === 0) {
-        result = result + downLeft;
-      }
-      if (i === height - 1 && y === width - 1) {
-        result = result + downRight + '\n';
-      }
-      if ((i === 0 && y > 1 && y < width - 1) || (i === height - 1 && y > 1 && y < width - 1)){
-        result =+ horisontal;
-      }
-      if (i > 0 && i < height - 1 && (y === 0)) {
-        result =+ vertical;
-      }
-      if (i > 0 && i < height - 1 && (y === width - 1)) {
-        result = result + vertical + '\n';
-      }
-      if ((i > 0 && i < height - 1 && (y > 0) && (y < width - 1))){ 
-        result =+ ' ';
-      }
-    }
-  }
-  return result;
+  const space = ' ';
+  const middleStr = `│${space.repeat(width - 2)}│\n`;
+  return `┌${horisontal.repeat(width - 2)}┐\n${middleStr.repeat(height - 2)}└${horisontal.repeat(width - 2)}┘\n`;
 }
 
 
